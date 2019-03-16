@@ -35,7 +35,7 @@ const jsConcat = function () {
       .pipe(base.gulp.dest(config.babel.dest));
 };
 let jsConcatTask = base.gulp.series(jsConcat);
-jsConcatTask.description = 'Builds a single .js file with a sourcemap from a single entry point (using babel & browserifiy)';
+jsConcatTask.description = "Builds a single .js file with a sourcemap from a single entry point\n                              (using babel & browserifiy)";
 jsConcatTask.options = {
   'production': 'Minifies the HTML.'
 };
@@ -71,7 +71,7 @@ const jsModernizr = function () {
   .pipe(base.gulp.dest(config.tmp));
 };
 let jsModernizrTask = base.gulp.series(jsModernizr);
-jsModernizrTask.description = 'uses gulp modernizr to find all modernizr needed properties in JS and SCSS and writes a modernizr.js file to tmp folder';
+jsModernizrTask.description = "uses gulp modernizr to find all modernizr needed properties in JS and\n                              SCSS and writes a modernizr.js file to tmp folder";
 base.gulp.task('js-modernizr', jsModernizrTask);
 module.exports['js-modernizr'] = jsModernizrTask;
 
