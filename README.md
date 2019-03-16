@@ -1,5 +1,5 @@
 # Statics - A static site generator
-This is a boilerplate for a static site generated, which means it will build .html, .css and .js files. Using Node.js/Gulp (tested with Node.js __version 10.15.2__).
+This is a boilerplate for a static site generator, which means it will build .html, .css and .js files. Using Node.js/Gulp (tested with Node.js __version 10.15.2__).
 The goal of this project is to set up small websites without a CMS (though all content can be dynamic and multilingual, loaded from a .json file). For all your clients who want a custom designed website ASAP but do not update the content themselves.
 
 # Global
