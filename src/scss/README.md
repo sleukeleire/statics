@@ -1,4 +1,4 @@
-# Sevenedge Scss structure
+# Scss structure
 
 # Table of contents
 
