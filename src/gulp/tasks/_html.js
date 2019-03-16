@@ -12,7 +12,7 @@ const base = require('../base').init();
 const fs = require('fs');
 // const critical = require('critical').stream;
 
-let htmlBuild = function (cb) {
+const htmlBuild = function (cb) {
   // data as json
   const data = JSON.parse(fs.readFileSync(config.data, 'utf8'));
 
@@ -54,34 +54,36 @@ let htmlBuild = function (cb) {
   // output files in app folder
   .pipe(base.gulp.dest(config.dest));
 };
-htmlBuild.description = 'Generates all HTML files';
-const htmlBuildTask = base.gulp.series(htmlBuild);
-base.gulp.task('html-build', htmlBuildTask, {
-  options: {
-      'production': 'Minifies the HTML.'
-  }
-});
+let htmlBuildTask = base.gulp.series(htmlBuild);
+htmlBuildTask.description = 'Generates all HTML files';
+htmlBuildTask.options = {
+  'production': 'Minifies the HTML.'
+};
+base.gulp.task('html-build', htmlBuildTask);
+module.exports['html-build'] = htmlBuildTask;
 
 // WATCHER
-let htmlWatch = function () {
+const htmlWatch = function () {
   // watch all files in config.scss
   base.gulp.watch(config.watch, htmlBuild);
 };
-htmlWatch.description = 'Start a watch task to watch all html.';
-const htmlWatchTask = base.gulp.series([htmlBuild, htmlWatch]);
-base.gulp.task('html-watch', htmlWatchTask, {
-  options: {
-      'production': 'Minifies the HTML.'
-  }
-});
+let htmlWatchTask = base.gulp.series([htmlBuild, htmlWatch]);
+htmlWatchTask.description = 'Start a watch task to watch all html.';
+htmlWatchTask.subTasks = 'SERIES([html-build, html-watch])';
+htmlWatchTask.options = {
+  'production': 'Minifies the HTML.'
+};
+base.gulp.task('html-watch', htmlWatchTask);
+module.exports['html-watch'] = htmlWatchTask;
 
 // // CLEANER
-let htmlClean = function () {
+const htmlClean = function () {
   return base.gulp
     .src(config.clean)
     .pipe(base.debug.log_files('remove'))
     .pipe(base.files.remove());
 };
-htmlClean.description = 'cleans all compiled js, temp files included';
-const htmlCleanTask = base.gulp.series(htmlClean);
+let htmlCleanTask = base.gulp.series(htmlClean);
+htmlCleanTask.description = 'cleans all compiled js, temp files included';
 base.gulp.task('html-clean', htmlCleanTask);
+module.exports['html-clean'] = htmlCleanTask;

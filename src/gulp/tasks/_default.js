@@ -8,40 +8,42 @@ const base = require('../base').init();
 // required dir
 var requireDir = require('require-dir');
 
+// logs a single table's row
+const logRow = (...cells) => {
+  let str = '  ';
+  let minLength = 30;
+  cells.forEach(cell => {
+    if (typeof(cell) === 'undefined') return;
+    
+    str += cell;
+    while (str.length < minLength) {
+      str += ' ';
+    }
+    minLength += 80;
+  });
+  console.log(str);
+};
 
 // tasks
 const help = function (cb) {
   // Require all tasks, including subfolders
   const reqs = requireDir('.', { recurse: true });
   console.log("\n");
-  console.log('  TASK NAME         TASK DESCRIPTION                                  SUBTASKS');
-  console.log('   --OPTIONNAME     OPTION DESCRIPTION');
-  console.log('  -------------------------------------------------------------------------');
+  logRow('TASK NAME', 'TASK DESCRIPTION', 'SUBTASKS');
+  logRow('   --OPTIONNAME', 'OPTION DESCRIPTION');
+  console.log('  ---------------------------------------------------------------------------------------------------------------------------');
+  logRow('default', 'This help!');
+  logRow('help', 'This help again :)');
   Object.keys(reqs).forEach(moduleName => {
+    // console.log(moduleName);
     Object.keys(reqs[moduleName]).forEach(taskName => {
       const taskInfo = reqs[moduleName][taskName];
-      let base = `  ${taskName}`;
-      while (base.length < 20) {
-        base += ' ';
-      }
-      if (taskInfo.description) {
-        base += taskInfo.description;
-      }
-      if (taskInfo.subTasks) {
-        while(base.length < 70) {
-          base += ' ';
-        }
-        base += taskInfo.subTasks;
-      }
-      console.log(base);
+
+      logRow(taskName, taskInfo.description, taskInfo.subTasks);
+
       if (taskInfo.options) {
         Object.keys(taskInfo.options).forEach(optionName => {
-          let optionLine = `   --${optionName}`;
-          while(optionLine.length < 20) {
-            optionLine += ' ';
-          }
-          optionLine += taskInfo.options[optionName];
-          console.log(optionLine);
+          logRow(`    --${optionName}`, taskInfo.options[optionName]);
         });
       }
     });
@@ -49,5 +51,6 @@ const help = function (cb) {
   console.log("\n");
   cb();
 };
-base.gulp.task('default', base.gulp.series(help));
-base.gulp.task('help', base.gulp.series(help));
+const helpTask = base.gulp.series(help);
+base.gulp.task('default', helpTask);
+base.gulp.task('help', helpTask);
