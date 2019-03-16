@@ -43,7 +43,7 @@ const help = function (cb) {
 
       if (taskInfo.options) {
         Object.keys(taskInfo.options).forEach(optionName => {
-          logRow(`    --${optionName}`, taskInfo.options[optionName]);
+          logRow(`   --${optionName}`, taskInfo.options[optionName]);
         });
       }
     });

@@ -1,19 +1,23 @@
 {
-  "name": "html_slicing_boiler",
-  "version": "1.0.0",
-  "description": "Boilerplate for site building without backend",
+  "name": "Statics",
+  "version": "0.0.1",
+  "description": "Static site generator boilerplae",
   "main": "build/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/sleukeleire/html_slicing_boiler.git"
+    "url": "git+ssh://git@github.com:sleukeleire/statics.git"
   },
   "keywords": [
     "pure",
     "html",
-    "boiler"
+    "boiler",
+    "static",
+    "site",
+    "generator",
+    "static site generator"
   ],
   "author": "Rein Deneut",
   "license": "ISC",
