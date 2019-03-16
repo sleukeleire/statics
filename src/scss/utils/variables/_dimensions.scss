@@ -1,0 +1,10 @@
+// ===
+// Dimensions
+// ===
+// naming convention: $px_
+
+// REPLACE '1280' WITH THE CORRECT CENTERED WITH (WITHOUT PADDING!)
+$px_default_width: 1230 - 30 - 30; // in pixels
+
+// REPLACE '48px' WITH THE CORRECT DEFAULT PADDING (WHEN WIDTH < $px_default_width, USED AS LEFT/RIGHT-PADDING FROM ALL CONTENT)
+$px_default_padding: 30; // in pixels

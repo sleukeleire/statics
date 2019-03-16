@@ -1,0 +1,21 @@
+// ===
+// Breakpoints
+// ===
+
+// Get breakpoint
+// Usage: get_breakpoint(laptop, smallest);
+@function get_breakpoint($device, $name: medium, $bps: $breakpoints) {
+  @if map-has-key($bps, $device) {
+    @if map-has-key(map-get($bps, $device), $name) {
+      @return map-get(map-get($bps, $device), $name);
+    }
+
+    @else {
+      @warn "Breakpoint #{$name} wasn't found in $breakpoints.";
+    }
+  }
+
+  @else {
+    @warn "Device #{$device} wasn't found in $breakpoints.";
+  }
+}

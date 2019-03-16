@@ -1,0 +1,91 @@
+// ===
+// Typography
+// ===
+
+// Variables
+$body_font-family: $font_default !default;
+$body_color: $color_font !default;
+$body_font-size: ($font_size_base*1px) !default;
+$body_line-height: $line-height_base !default;
+
+$p_padding-top: px_to_rem($px_default_padding) !default;
+
+$h1_font_size: px_to_rem($font_size_h1) !default;
+$h1_line-height: $line-height_h1 !default;
+
+$h2_font_size: px_to_rem($font_size_h2) !default;
+$h2_line-height: $line-height_h2 !default;
+$h2_padding-top: px_to_rem($font_size_h2 / 2) !default;
+
+$h3_font_size: px_to_rem($font_size_h3) !default;
+$h3_line-height: $line-height_h3 !default;
+$h3_padding-top: px_to_rem($font_size_h3 / 2) !default;
+
+$h4_font_size: px_to_rem($font_size_h4) !default;
+$h4_line-height: $line-height_h4 !default;
+$h4_padding-top: px_to_rem($font_size_h4 / 2) !default;
+
+$link_color: $color_font !default;
+
+$selection_color: $color_font !default;
+$selection_background: lighten($color_font, 50%) !default;
+
+// Styles
+::selection {
+  background-color: $selection_background; /* WebKit/Blink Browsers */
+  color: $selection_color;
+}
+
+::-moz-selection {
+  background-color: $selection_background; /* Gecko Browsers */
+  color: $selection_color;
+}
+
+:root {
+  font-size: $body_font-size;
+  line-height: $body_line-height;
+  font-family: $body_font-family;
+  color: $body_color;
+}
+
+h1 {
+  font-size: $h1_font_size;
+  line-height: $h1_line-height;
+}
+
+h2 {
+  font-size: $h2_font_size;
+  line-height: $h2_line-height;
+  padding-top: $h2_padding-top;
+}
+
+h3 {
+  font-size: $h3_font_size;
+  line-height: $h3_line-height;
+  padding-top: $h3_padding-top;
+}
+
+h4 {
+  font-size: $h4_font_size;
+  line-height: $h4_line-height;
+  padding-top: $h4_padding-top;
+}
+
+a {
+  color: $link_color;
+  text-decoration: none;
+}
+
+p {
+  padding-top: $p_padding-top;
+  font-weight: 500;
+
+  .no-touchevents & a {
+    opacity: 1;
+    transition: opacity $timing_hover ease-in-out;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

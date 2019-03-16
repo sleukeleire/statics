@@ -1,0 +1,19 @@
+{% extends "../partials/layout.njk" %}
+
+{% block header %}
+  {% import 'macros/header.njk' as header %}
+  {{ header.active('home') }}
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  test
+  {% for item in items %}
+    <article class="item">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description|safe }}</p>
+    </article>
+  {% endfor %}
+
+  <img src="./img/me-185x185.jpg" alt="Rein Deneut - avatar"/>
+{% endblock %}

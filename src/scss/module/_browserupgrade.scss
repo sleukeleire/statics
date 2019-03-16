@@ -1,0 +1,19 @@
+// EXAMPLE FROM https://reind.be/portfolio :
+
+// .browserupgrade {
+//   z-index: 2;
+//   position: relative;
+//   background: white;
+//   width: 100%;
+//   text-align: center;
+//   padding: 20px;
+// }
+
+// .browserupgrade--ie10 {
+//   display: none;
+
+//   // using this trick: https://css-tricks.com/ie-10-specific-styles/ to add the useragent as data attribute on the html tag
+//   html[data-useragent*='MSIE 10.0'] & {
+//     display: block;
+//   }
+// }

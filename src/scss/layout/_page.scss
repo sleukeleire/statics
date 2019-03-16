@@ -1,0 +1,25 @@
+// ===
+// Page
+// ===
+
+// EXAMPLE FROM https://reind.be/portfolio :
+
+// .page {
+//   width: 100%;
+//   min-width: get_breakpoint(mobile, xxs) * 1px;
+//   padding-top: px_to_rem(95); // height of header
+//   background-color: $color_reindev_blue_light_bg;
+//   color: $color_black;
+// }
+
+// .page__content {
+//   width: 100%;
+//   margin: 0 auto;
+//   max-width: px_to_rem($px_default_width + (2 * $px_default_padding));
+//   padding-left: px_to_rem($px_default_padding);
+//   padding-right: px_to_rem($px_default_padding);
+// }
+
+// .page__content--oh {
+//   overflow: hidden;
+// }

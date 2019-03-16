@@ -1,0 +1,68 @@
+// EXAMPLE FROM https://reind.be/portfolio :
+
+// .button {
+//   border: px_to_rem(3) solid $color_reindev_blue_darkest;
+//   border-radius: px_to_rem(6);
+//   font-size: px_to_rem(14);
+//   line-height: (30 / 14);
+//   padding: px_to_rem(10) px_to_rem(44) px_to_rem(9);
+//   cursor: pointer;
+//   color: $color_reindev_blue_darkest;
+//   font-weight: 600;
+
+//   html.no-touchevents & {
+//     transition: color  $timing_hover ease-in-out, background-color $timing_hover ease-in-out;
+
+//     &:hover {
+//       color: $color_white;
+//       background-color: $color_reindev_blue_darkest;
+
+//       .button__arrow-next {
+//         transform: translateY(-50%) translateX(px_to_rem(10));
+//       }
+
+//       .button__arrow-next__svg__path {
+//         fill: $color_white;
+//       }
+//     }
+//   }
+// }
+
+// .button--next {
+//   padding-right: px_to_rem(59);
+//   position: relative;
+// }
+
+// .button__arrow-next {
+//   position: absolute;
+//   top: 50%;
+//   right: px_to_rem(38);
+//   transform: translateY(-50%);
+//   width: px_to_rem(10);
+//   margin-top: -0.8%;
+
+//   html.no-touchevents & {
+//     transition: transform $timing_hover ease-in-out;
+//   }
+// }
+
+// .button__arrow-next__svg {
+//   width: 100%;
+// }
+
+// .button__arrow-next__svg__path {
+//   // fill: currentColor; // IE can't handle the hover state transition with currentColor nicely...
+//   fill: $color_reindev_blue_darkest;
+
+//   html.no-touchevents & {
+//     transition: fill $timing_hover ease-in-out;
+//   }
+// }
+
+// // MEDIA QUERIS
+// @include mq(tablet, sm) { // bigger then 736px
+//   .button {
+//     font-size: px_to_rem(16);
+//     line-height: (30 / 16);
+//   }
+// }

@@ -1,0 +1,76 @@
+// EXAMPLE FROM https://reind.be/portfolio :
+
+// $top: px_to_rem(99);
+
+// .nav-mobile {
+//   left: 0;
+//   position: fixed;
+//   top: $top;
+//   height: calc(100% - #{$top});
+//   width: 100%;
+//   opacity: 0;
+//   pointer-events: none;
+//   transition: opacity $timing_hover ease-in-out;
+//   perspective: 300px;
+//   perspective-origin: 50% 50%;
+// }
+
+// .nav-mobile__inner {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   // background-color: darken($color_grey, 5);
+//   background-color: $color_white;
+//   will-change: transform;
+//   transform: rotateX(-90deg);
+//   transform-origin: top center;
+//   transition: transform $timing_hover ease-in-out;
+// }
+
+// .nav-mobile__link {
+//   color: $color_reindev_blue_darkest;
+//   font-weight: 500;
+//   width: 100%;
+//   text-align: center;
+//   padding-top: 3%;
+//   padding-bottom: 3%;
+//   position: relative;
+
+//   &.is-active .nav-mobile__link__hover {
+//     border-bottom-color: currentColor;
+//   }
+// }
+
+// .nav-mobile__link--divider {
+//   height: px_to_rem(2);
+//   background: $color_reindev_blue_darkest;
+//   padding-top: 0;
+//   padding-bottom: 0;
+//   width: 80%;
+//   align-self: center;
+// }
+
+// .nav-mobile__link--flex {
+//   padding-top: O;
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+// }
+
+// .nav-mobile__link__hover {
+//   padding: px_to_rem(7) px_to_rem(3);
+//   border-bottom: px_to_rem(4) solid transparent;
+//   transition: border-bottom-color $timing_hover ease-in-out;
+// }
+
+// // MEDIA QUERIS
+// @include mq(tablet, sm) { // bigger then 736px
+//   .nav-mobile {
+//     display: none;
+//   }
+// }

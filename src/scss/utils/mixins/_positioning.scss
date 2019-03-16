@@ -1,0 +1,36 @@
+// ===
+// Positioning
+// ===
+
+@mixin position($position, $args) {
+  position: $position;
+
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+}
+
+// Positioning helpers
+@mixin absolute($args: '') {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+  @include position(relative, $args);
+}
+
+// center_vertically
+// Usage: @include center_vertically;
+@mixin center_vertically {
+  @include absolute(50% 50%);
+
+  transform: translate(-50%, -50%);
+}

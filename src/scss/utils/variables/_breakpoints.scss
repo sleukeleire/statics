@@ -1,0 +1,41 @@
+// ===
+// Breakpoints
+// ===
+// Source: http://ux.stackexchange.com/questions/6929/common-screen-resolution
+// Source: http://mydevice.io/devices/
+// @IMPORTANT: comment the lines you will not be using.
+
+/* stylelint-disable */
+$breakpoints: (
+  mobile: (
+    xxs: 	320, 	// width from iPhone and a lot of other smartphones
+    xs: 	360, 	// width from Samsung Galaxy S3, S4 mini, S4, S5 and a lot of other smartphones
+    sm: 	375, 	// width from iPhone 6
+    md: 	400, 	// width from Samsung Galaxy Note (use this untill 375px, a lot of steps in between, 390px (blackberry), 384px (LG NExus, and Optimus) will use this query as well)
+    lg: 	480, 	// height from iPhone and a bunch of other smartphones
+    xl: 	533, 	// height from Samsung Galaxy S(2)
+    xxl: 	604, 	// width from Asus Nexus 7 (v1)
+  ),
+
+  tablet: (
+    xxs: 	640, 	// height from Samsung Galaxy Note 3 & 4 ('Phablets') and height from a bunch of other smartphones
+    xs: 	667, 	// height from iPhone 6
+    sm: 	736, 	// iPhone 6 plus height
+    md: 	768, 	// iPad width, and others width...
+    lg: 	800, 	// width from Samsung Galaxy Tab (8.9", 2 10" and 3 10") and Samsung Nexus 10 AND Amazon Kindle Fire HD 8.9
+    mlg: 	860, 	// width from Samsung Galaxy Tab (8.9", 2 10" and 3 10") and Samsung Nexus 10 AND Amazon Kindle Fire HD 8.9
+    xl: 	960, 	// height from Asus Nexus 7 (v2) AND LG G Pad 8.3
+    xxl: 	1024,	// iPad height, iPad pro width, and another bunch of tablets :)
+  ),
+
+  laptop: (
+    xxs: 	1120,
+    xs: 	1152,
+    sm: 	1280, 	// also height from Samsung Galaxy Tab 3 (and 2) 10", Samsung Nexus 10 AND Samsung Galaxy Tab (8.9"), and another bunch of tablets :)
+    md: 	1366, 	// also height from iPad Pro
+    lg: 	1440,
+    xl: 	1550,
+    xxl: 	1600,
+  )
+);
+/* stylelint-enable */

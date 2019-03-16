@@ -1,0 +1,32 @@
+// ===
+// Base
+// ===
+
+$base_box-sizing: border-box !default;
+
+*,
+*::after,
+*::before {
+  box-sizing: $base_box-sizing;
+}
+
+*:active,
+*:hover,
+*:focus {
+  outline: 0;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+
+  /* stylelint-disable */
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and (min-device-pixel-ratio: 1.25),
+    only screen and (min--moz-device-pixel-ratio: 1.25),
+    only screen and (min-resolution: 200dpi),
+    only screen and (min-resolution: 1.25dppx) {
+      font-smoothing: subpixel-antialiased;
+  }
+  /* stylelint-enable */
+}

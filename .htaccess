@@ -1,0 +1,5 @@
+# the following prevents display of the filetohide file
+<files README.md>
+    order allow,deny
+    deny from all
+</files>

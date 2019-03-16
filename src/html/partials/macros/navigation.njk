@@ -1,0 +1,9 @@
+{% macro active(page='home') %}
+
+<nav class="navigation">
+  <a class="navigation__link{% if page == 'home' %} navigation__link--active{% endif %}" href="./">home</a>
+  <a class="navigation__link{% if page == 'about' %} navigation__link--active{% endif %}" href="./about.html">about</a>
+  <a class="navigation__link{% if page == 'contact' %} navigation__link--active{% endif %}" href="./contact.html">contact</a>
+</nav>
+
+{% endmacro %}

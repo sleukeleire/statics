@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "title": "This is an items title",
+      "description": "This is an items description, can include <b>bold text</b>, <i>italic text</i>,<br/>Newlines and more!"
+    },
+    {
+      "title": "This is a second items title",
+      "description": "This is the second items description, can include <b>bold text</b>, <i>italic text</i>,<br/>Newlines and more!"
+    },
+    {
+      "title": "This is a third items title",
+      "description": "This is the third items description, can include <b>bold text</b>, <i>italic text</i>,<br/>Newlines and more!"
+    }
+  ]
+}

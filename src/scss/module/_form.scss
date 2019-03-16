@@ -1,0 +1,198 @@
+// EXAMPLE FROM https://reind.be/portfolio :
+
+// .form {
+//   max-width: px_to_rem(770);
+//   margin-left: auto;
+//   margin-right: auto;
+//   position: relative;
+// }
+
+// .form__error {
+//   color: $color_red;
+//   height: 0;
+//   padding-top: 0;
+//   opacity: 0;
+//   transition: height $timing_hover ease-in-out, opacity $timing_hover ease-in-out, padding-top $timing_hover ease-in-out;
+
+//   &.is-visible {
+//     height: auto;
+//     padding-top: px_to_rem($px_default_padding);
+//     opacity: 1;
+//   }
+
+//   a {
+//     color: $color_red;
+//     text-decoration: underline;
+
+//     .no-touchevents & {
+//       transition: color $timing_hover ease-in-out;
+
+//       &:hover {
+//         color: $color_href;
+//       }
+//     }
+//   }
+// }
+
+// .form__inputs {
+//   position: relative;
+// }
+
+// .form__input {
+//   position: relative;
+//   margin-top: px_to_rem(32);
+// }
+
+// .form__input__border {
+//   width: 100%;
+//   height: px_to_rem(4);
+//   // background-color: $color_black;
+//   background-color: currentColor;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   will-change: transform;
+//   transform: translateY(-100%);
+//   transition: transform $timing_hover ease-in-out, background-color $timing_hover ease-in-out;
+// }
+
+// .form__input__input {
+//   width: 100%;
+//   font-family: $font_default;
+//   // color: $color_grey;
+//   font-size: px_to_rem(16);
+//   font-weight: 500;
+//   transition: color $timing_hover ease-in-out;
+
+//   &:focus,
+//   &:valid { // this only works if the input is required!
+//     ~ .form__input__label {
+//       opacity: 0;
+//       pointer-events: none;
+//     }
+//   }
+
+//   &.has-errored {
+//     color: $color_red;
+
+//     ~ .form__input__border {
+//       background-color: $color_red;
+//     }
+
+//     ~ .form__input__label {
+//       color: $color_red;
+//     }
+//   }
+// }
+
+// .form__input__input--text {
+//   height: px_to_rem(48);
+//   line-height: (48 / 16);
+
+//   &:focus,
+//   &:valid {
+//     ~ .form__input__border {
+//       transform: translateY(px_to_rem(48));
+//     }
+//   }
+
+//   ~ .form__input__label {
+//     opacity: 1;
+//     transition: opacity $timing_hover / 2 ease-in-out;
+//   }
+// }
+
+// .form__input__input--textarea {
+//   line-height: (25 / 16);
+//   padding-top: px_to_rem(11);
+//   height: px_to_rem(25 * 5);
+
+//   &:focus,
+//   &:valid {
+//     ~ .form__input__border {
+//       transform: translateY(px_to_rem(25 * 5));
+//     }
+//   }
+// }
+
+// .form__input__label {
+//   // color: $color_grey_labels;
+//   color: $color_reindev_blue;
+//   line-height: (48 / 16);
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   cursor: text;
+//   font-size: px_to_rem(16);
+//   text-align: left;
+// }
+
+// [required] ~ .form__input__label::after {
+//   content: '*';
+//   display: inline-block;
+//   color: $color_red;
+//   font-size: px_to_rem(26);
+//   line-height: 0;
+//   transform: translateY(px_to_rem(3));
+// }
+
+// .form__actions {
+//   margin-top: px_to_rem(32);
+//   padding-top: px_to_rem(30);
+//   // border-top: 1px solid $color_black_light;
+//   border-top: 1px solid currentColor;
+// }
+
+// .form__loading {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba($color_black_light, .3);
+//   border-radius: px_to_rem(3);
+//   opacity: 0;
+//   pointer-events: none;
+//   visibility: hidden;
+//   transition: opacity $timing_hover ease-in-out, visibility 0s ease-in-out $timing_hover;
+
+//   .is-loading & {
+//     opacity: 1;
+//     pointer-events: all;
+//     visibility: visible;
+//     transition: opacity $timing_hover ease-in-out, visibility $timing_hover ease-in-out 0s;
+//   }
+// }
+
+// .form__loading__loader {
+//   position: absolute;
+//   top: 50%;
+//   right: 50%;
+//   transform: translateY(-50%) translateX(50%);
+// }
+
+// // MEDIA QUERIS
+// @include mq(tablet, sm) { // bigger then 736px
+//   .form__inputs--double {
+//     display: flex;
+//     justify-content: space-between;
+
+//     .form__inputs__flexchild {
+//       flex-basis: 50%;
+
+//       &:first-child .form__input {
+//         margin-right: px_to_rem(15);
+//       }
+
+//       &:last-child .form__input {
+//         margin-left: px_to_rem(15);
+//       }
+//     }
+//   }
+
+//   .form__loading {
+//     border-radius: px_to_rem(6);
+//   }
+// }

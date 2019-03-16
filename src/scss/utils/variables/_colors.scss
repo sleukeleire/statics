@@ -1,0 +1,28 @@
+// ===
+// Colors
+// ===
+// Naming convention: $color_{name}
+
+// Some commonly used colors
+$color_white: #fff;
+$color_black: #000;
+
+// Social icon colors
+$color_facebook: #3b5998;
+$color_twitter: #00aced;
+$color_youtube: #b00;
+$color_linkedin: #007bb6;
+$color_pinterest: #cb2027;
+
+// brand colors
+$color_brand_red: #ff0000; // should trigger a gulp scss-lint warning :) because this is only an example, no one uses pure red in there design... I hope :)
+
+// Project specific colors
+$color_font: #212121;
+$color_href: #0060b6;
+
+$color_black_light: #242424;
+$color_grey: #303030;
+
+// Element colors
+$link_color: $color_href;

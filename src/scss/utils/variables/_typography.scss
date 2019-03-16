@@ -1,0 +1,23 @@
+// ===
+// Typography
+// ===
+
+// Defaults
+$font_size_base: 18; // In pixels
+$line-height_base: (30 / 18);
+
+$font_size_h1: 48; // In pixels
+$line-height_h1: (50 / 48);
+
+$font_size_h2: 40; // In pixels
+$line-height_h2: (48 / 40);
+
+$font_size_h3: 24; // In pixels
+$line-height_h3: (30 / 24);
+
+$font_size_h4: 20; // In pixels
+$line-height_h4: (26 / 20);
+
+// Fonts
+// Naming convention: $font_{fontname}
+$font_default: 'Open Sans', sans-serif;
