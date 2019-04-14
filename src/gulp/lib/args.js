@@ -8,7 +8,7 @@ if (process.argv.length > 2) {
   args.taskName = process.argv[2];
 
   // add every other argument to object of args as keys (so no --arg="this-is-the-value")! ONLY BOOLEAN SUPPORT
-  process.argv.slice(3).forEach(arg => {
+  process.argv.forEach(arg => {
     if (arg.substr(0, 2) === '--') arg = arg.substr(2);
     args[arg] = true;
   });

@@ -10,7 +10,7 @@ const base = require('../base').init();
 
 // other needed modules
 const fs = require('fs');
-// const critical = require('critical').stream;
+const critical = require('critical').stream;
 
 const htmlBuild = function (cb) {
   // data as json
@@ -25,32 +25,35 @@ const htmlBuild = function (cb) {
   .pipe(base.$.nunjucksRender({
     path: [config.partials]
   }))
-  // @TODO, add critical css inline
-  // .pipe(base.$.if(base.args.production, critical({  // for production, generate critical css
-  //   'base': config.root + langcode,
-  //   'inline': true,
-  //   'css': [
-  //     './css/style.css'
-  //   ],
-  //   'dimensions': [{
-  //     'height': 568,
-  //     'width': 320
-  //   },
-  //   {
-  //     'height': 768,
-  //     'width': 640
-  //   },
-  //   {
-  //     'height': 1080,
-  //     'width': 1920
-  //   }]
-  // })))
+  .pipe(base.$.if(base.args.production, critical({  // for production, generate critical css
+    'base': config.root,
+    'inline': true,
+    'css': [
+      config.dest + 'css/style.css'
+    ],
+    'dimensions': [{
+      'height': 568,
+      'width': 320
+    },
+    {
+      'height': 768,
+      'width': 640
+    },
+    {
+      'height': 1080,
+      'width': 1920
+    }]
+  })))
+  .on('error', function(err) {
+    base.$.util.log(base.$.util.colors.red(err.message));
+  })
   .pipe(base.$.if(base.args.production, base.$.htmlmin({  // for production, minify the code
     'collapseWhitespace': true,
     'removeComments': true,
     'minifyJS': true,
     'minifyCSS': true
   })))
+  .pipe(base.debug.log_files('copy'))
   // output files in app folder
   .pipe(base.gulp.dest(config.dest));
 };
