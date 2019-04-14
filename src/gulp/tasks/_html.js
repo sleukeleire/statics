@@ -4,6 +4,7 @@
 
 // config
 const config = require('../config').html;
+const cssConfig = require('../config').scss;
 
 // base
 const base = require('../base').init();
@@ -29,20 +30,9 @@ const htmlBuild = function (cb) {
     'base': config.root,
     'inline': true,
     'css': [
-      config.dest + 'css/style.css'
+      cssConfig.dest + '/' + cssConfig.dest_filename
     ],
-    'dimensions': [{
-      'height': 568,
-      'width': 320
-    },
-    {
-      'height': 768,
-      'width': 640
-    },
-    {
-      'height': 1080,
-      'width': 1920
-    }]
+    'dimensions': cssConfig.inline_css_dimensions
   })))
   .on('error', function(err) {
     base.$.util.log(base.$.util.colors.red(err.message));

@@ -9,6 +9,7 @@ module.exports = {
 
   scss: {
     src: src + 'scss/style.scss',
+    dest_filename: 'style.css',
     dest: build + 'css',
     lint: {
       files: src + 'scss/**/*.scss',
@@ -49,7 +50,21 @@ module.exports = {
       'IE 11',
       'IE 10'
     ],
-    watch: src + 'scss/**/*.scss'
+    watch: src + 'scss/**/*.scss',
+    inline_css_dimensions: [
+      {
+        'height': 568,
+        'width': 320
+      },
+      {
+        'height': 768,
+        'width': 640
+      },
+      {
+        'height': 1080,
+        'width': 1920
+      }
+    ]
   },
 
   js: {
