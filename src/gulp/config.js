@@ -179,10 +179,12 @@ module.exports = {
       src + 'fonts/**/*.woff',
       src + 'fonts/**/*.woff2'
     ],
-    dest: build + 'fonts',
+    build: build,
+    dest_folder: 'fonts',
     clean: [
-      build + 'fonts/**/*.woff',
-      build + 'fonts/**/*.woff2'
+      build + '**/fonts/**/*.woff',
+      build + '**/fonts/**/*.woff2',
+      build + '**/fonts'
     ],
     watch: [
       src + 'fonts/**/*.woff',
