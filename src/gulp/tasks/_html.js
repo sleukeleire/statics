@@ -13,6 +13,19 @@ const base = require('../base').init();
 const fs = require('fs');
 const critical = require('critical').stream;
 
+// // CLEANER
+const htmlClean = function () {
+  return base.gulp
+    .src(config.clean)
+    .pipe(base.debug.log_files('remove'))
+    .pipe(base.files.remove());
+};
+let htmlCleanTask = base.gulp.series(htmlClean);
+htmlCleanTask.description = 'cleans all compiled js, temp files included';
+base.gulp.task('html-clean', htmlCleanTask);
+module.exports['html-clean'] = htmlCleanTask;
+
+// BUILD
 const htmlBuild = function (cb) {
   // data as json
   const data = JSON.parse(fs.readFileSync(config.data, 'utf8'));
@@ -47,8 +60,9 @@ const htmlBuild = function (cb) {
   // output files in app folder
   .pipe(base.gulp.dest(config.dest));
 };
-let htmlBuildTask = base.gulp.series(htmlBuild);
+let htmlBuildTask = base.gulp.series([htmlClean, htmlBuild]);
 htmlBuildTask.description = 'Generates all HTML files';
+htmlBuildTask.subTasks = 'SERIES([html-clean, html-build])';
 htmlBuildTask.options = {
   'production': 'Minifies the HTML.'
 };
@@ -68,15 +82,3 @@ htmlWatchTask.options = {
 };
 base.gulp.task('html-watch', htmlWatchTask);
 module.exports['html-watch'] = htmlWatchTask;
-
-// // CLEANER
-const htmlClean = function () {
-  return base.gulp
-    .src(config.clean)
-    .pipe(base.debug.log_files('remove'))
-    .pipe(base.files.remove());
-};
-let htmlCleanTask = base.gulp.series(htmlClean);
-htmlCleanTask.description = 'cleans all compiled js, temp files included';
-base.gulp.task('html-clean', htmlCleanTask);
-module.exports['html-clean'] = htmlCleanTask;

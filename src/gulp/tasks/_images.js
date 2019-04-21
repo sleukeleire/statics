@@ -51,13 +51,6 @@ imagesOptimizeChangedTask.description = 'Copies and optimize all changed non-svg
 base.gulp.task('images-optimize-changed', imagesOptimizeChangedTask);
 module.exports['images-optimize-changed'] = imagesOptimizeChangedTask;
 
-// BUILD
-let imagesBuildTask = base.gulp.series(['images-svgs', 'images-optimize']);
-imagesBuildTask.description = 'Copies and optimize images / svgs.';
-imagesBuildTask.subTasks = 'SERIES([images-svgs, images-optimize])';
-base.gulp.task('images-build', imagesBuildTask);
-module.exports['images-build'] = imagesBuildTask;
-
 // CLEANER
 const imagesClean = function () {
   return base.gulp
@@ -69,6 +62,13 @@ let imagesCleanTask = base.gulp.series(imagesClean);
 imagesCleanTask.description = 'cleans all optimized/minifies images';
 base.gulp.task('images-clean', imagesCleanTask);
 module.exports['images-clean'] = imagesCleanTask;
+
+// BUILD
+let imagesBuildTask = base.gulp.series(['images-clean', 'images-svgs', 'images-optimize']);
+imagesBuildTask.description = 'Copies and optimize images / svgs.';
+imagesBuildTask.subTasks = 'SERIES([images-clean, images-svgs, images-optimize])';
+base.gulp.task('images-build', imagesBuildTask);
+module.exports['images-build'] = imagesBuildTask;
 
 // WATCHER
 const imagesWatchSvgs = function () {

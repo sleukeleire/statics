@@ -27,6 +27,19 @@ const linterProcessors = [
   })
 ];
 
+// CLEANER
+const scssClean = function () {
+  return base.gulp
+  .src(config.clean)
+  .pipe(base.debug.log_files('remove'))
+  .pipe(base.files.remove());
+  
+};
+let scssCleanTask = base.gulp.series(scssClean);
+scssCleanTask.description = 'cleans all compiled css';
+base.gulp.task('scss-clean', scssCleanTask);
+module.exports['scss-clean'] = scssCleanTask;
+
 // TASKS
 const scssBuild = function () {
   // Variables/config
@@ -49,8 +62,9 @@ const scssBuild = function () {
     .pipe(base.debug.log_files('copy'))
     .pipe(base.gulp.dest(config.dest));
 };
-let scssBuildTask = base.gulp.series(scssBuild);
+let scssBuildTask = base.gulp.series([scssCleanTask, scssBuild]);
 scssBuildTask.description = 'Compile all sass files';
+scssBuildTask.subTasks = 'SERIES([scss-clean, scss-build])';
 scssBuildTask.options = {
   'production': 'Compiles compressed.'
 };
@@ -80,16 +94,3 @@ let scssWatchTask = base.gulp.series(['scss-lint', 'scss-build', scssWatch]);
 scssWatchTask.description = 'Start a watch task to lint and compile the scss.';
 base.gulp.task('scss-watch', scssWatchTask);
 module.exports['scss-watch'] = scssWatchTask;
-
-// CLEANER
-const scssClean = function () {
-  return base.gulp
-  .src(config.clean)
-  .pipe(base.debug.log_files('remove'))
-  .pipe(base.files.remove());
-  
-};
-let scssCleanTask = base.gulp.series(scssClean);
-scssCleanTask.description = 'cleans all compiled css';
-base.gulp.task('scss-clean', scssCleanTask);
-module.exports['scss-clean'] = scssCleanTask;
