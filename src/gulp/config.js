@@ -7,6 +7,10 @@ const tmp = root + 'tmp/';
 module.exports = {
   root: root,
 
+  data: {
+    path: src + 'html/data',
+  },
+
   scss: {
     src: src + 'scss/style.scss',
     dest_filename: 'style.css',
@@ -134,7 +138,6 @@ module.exports = {
       src + 'html/data/**/*.json'
     ],
     clean: build + '**/*.html',
-    data: src + 'html/data',
   },
 
   images: {

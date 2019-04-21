@@ -9,6 +9,7 @@ module.exports = {
     this.debug = require('./lib/debug');
     this.files = require('./lib/files');
     this.args = require('./lib/args');
+    this.locale = require('./lib/locale');
     this.tmpFolder = './.tmp/';
 
     return this;
