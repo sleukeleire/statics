@@ -77,9 +77,10 @@ module.exports = {
   },
 
   js: {
+    build: build,
+    dest_folder: 'js',
     babel: {
       entry: src + 'js/main.js',
-      dest: build + 'js',
       dest_filename: 'script.js',
       vendor_src: [
         // this is project dependent, the vendor JS libs to addEventListener

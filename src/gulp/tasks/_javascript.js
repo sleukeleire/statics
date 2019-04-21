@@ -5,12 +5,14 @@ const config = require('../config').js;
 let base = require('../base').init();
 
 const browserify  = require('browserify');
-const babelify    = require('babelify');
+// const babelify    = require('babelify');
 const source      = require('vinyl-source-stream');
 const buffer      = require('vinyl-buffer');
 
-const jsConcat = function () {
-  // app.js is your main JS file with all your module inclusions
+const jsConcatOneLanguage = function (locale, data, cb) {
+  // build localized dest
+  const dest = config.build + (locale ? `/${locale}/` : '/') + config.dest_folder;
+
   return browserify({entries: config.babel.entry, debug: true})
       .transform('babelify', {
         presets: [
@@ -32,7 +34,13 @@ const jsConcat = function () {
       .pipe(base.$.concat(config.babel.dest_filename))
       .pipe(base.$.if(base.args.production, base.$.uglify()))
       .pipe(base.$.if(!base.args.production, base.$.sourcemaps.write('.')))
-      .pipe(base.gulp.dest(config.babel.dest));
+      .pipe(base.gulp.dest(dest))
+      .on('end', () => {
+        cb();
+      });
+};
+const jsConcat = function (cb) {
+   return base.locale.langsFromDataJsons(jsConcatOneLanguage, cb);
 };
 let jsConcatTask = base.gulp.series(jsConcat);
 jsConcatTask.description = "Builds a single .js file with a sourcemap from a single entry point\n                              (using babel & browserifiy)";
