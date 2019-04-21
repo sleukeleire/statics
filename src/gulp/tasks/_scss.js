@@ -41,7 +41,10 @@ base.gulp.task('scss-clean', scssCleanTask);
 module.exports['scss-clean'] = scssCleanTask;
 
 // TASKS
-const scssBuild = function () {
+const scssBuildOneLanguage = function (locale, data, cb) {
+  // build localized dest
+  const dest = config.build + (locale ? `/${locale}/` : '/') + config.dest_folder;
+
   // Variables/config
   let sass_settings = {
     outputStyle: base.args.production ? 'compressed' : 'nested',
@@ -60,7 +63,13 @@ const scssBuild = function () {
     .pipe(base.$.sass(sass_settings).on('error', base.$.sass.logError))
     .pipe(base.$.postcss(processors))
     .pipe(base.debug.log_files('copy'))
-    .pipe(base.gulp.dest(config.dest));
+    .pipe(base.gulp.dest(dest))
+    .on('end', () => {
+      cb();
+    });
+};
+const scssBuild = function (cb) {
+  base.locale.langsFromDataJsons(scssBuildOneLanguage, cb);
 };
 let scssBuildTask = base.gulp.series([scssCleanTask, scssBuild]);
 scssBuildTask.description = 'Compile all sass files';
