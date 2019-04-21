@@ -30,7 +30,7 @@ const linterProcessors = [
 // CLEANER
 const scssClean = function () {
   return base.gulp
-  .src(config.clean)
+  .src(config.clean, {allowEmpty: true})
   .pipe(base.debug.log_files('remove'))
   .pipe(base.files.remove());
   

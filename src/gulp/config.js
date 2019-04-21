@@ -16,7 +16,10 @@ module.exports = {
     dest_filename: 'style.css',
     build: build,
     dest_folder: 'css',
-    clean: build + '**/css/**/*',
+    clean: [
+      root + 'tmp/*.css',
+      build + '**/css',
+    ],
     lint: {
       files: src + 'scss/**/*.scss',
       extends: 'stylelint-config-standard',
