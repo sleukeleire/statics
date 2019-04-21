@@ -1,8 +1,8 @@
-{% macro active(page='home') %}
+{% macro active(page='home', strHeader='') %}
 
 <header class="header">
   <img class="header__logo" src="./img/logo.svg" alt="Logo" />
-  THIS IS THE HEADER!
+  {{ strHeader }}
   
   {% import 'macros/navigation.njk' as navigation %}
   {{ navigation.active(page) }}

@@ -134,7 +134,7 @@ module.exports = {
       src + 'html/data/**/*.json'
     ],
     clean: build + '**/*.html',
-    data: src + 'html/data/data.json'
+    data: src + 'html/data',
   },
 
   images: {

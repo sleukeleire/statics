@@ -1,0 +1,20 @@
+{
+  "seoTitle": "STATICS - Door Reindev",
+  "items": [
+    {
+      "title": "Dit is een items titel",
+      "description": "Dit is een items omschrijving, dit kan <b>vette tekst</b>, <i>cursieve tekst</i>,<br/>witregels en meer bevatten!"
+    },
+    {
+      "title": "Dit is een items titel",
+      "description": "Dit is een items omschrijving, dit kan <b>vette tekst</b>, <i>cursieve tekst</i>,<br/>witregels en meer bevatten!"
+    },
+    {
+      "title": "Dit is een items titel",
+      "description": "Dit is een items omschrijving, dit kan <b>vette tekst</b>, <i>cursieve tekst</i>,<br/>witregels en meer bevatten!"
+    }
+  ],
+  "strContent": "DIT IS DE INHOUD!",
+  "strHeader": "DIT IS DE HEADER!",
+  "strFooter": "DIT IS DE FOOTER!"
+}
