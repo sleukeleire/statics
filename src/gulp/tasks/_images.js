@@ -10,42 +10,74 @@ const base = require('../base').init();
 
 
 // SVGS
-const _imagesSvgs = function (changed) {
-    return base.gulp
-        .src(config.src_svgs)
-        .pipe(base.$.if(changed, base.$.changed(config.dest)))
-        .pipe(base.debug.log_files('images-svgs'))
-        .pipe(base.$.svgmin())
-        .pipe(base.gulp.dest(config.dest));
+const _imagesSvgsOneLanguage = function (changed, locale, cb) {
+  // build localized dest
+  const dest = config.build + (locale ? `/${locale}/` : '/') + config.dest_folder;
+
+  return base.gulp
+    .src(config.src_svgs)
+    .pipe(base.$.if(changed, base.$.changed(dest)))
+    .pipe(base.debug.log_files('images-svgs'))
+    .pipe(base.$.svgmin())
+    .pipe(base.gulp.dest(dest))
+    .on('end', () => {
+      cb();
+    });
 }
-const imagesSvgs = function () { return _imagesSvgs(false) };
+const _imagesSvgsOneLanguageNotChanged = function (locale, data, cb) {
+  return _imagesSvgsOneLanguage(false, locale, cb);
+}
+const imagesSvgs = function (cb) {
+  return base.locale.langsFromDataJsons(_imagesSvgsOneLanguageNotChanged, cb);
+};
 let imagesSvgsTask = base.gulp.series(imagesSvgs);
 imagesSvgsTask.description = 'Copies and minifies SVG images';
 base.gulp.task('images-svgs', imagesSvgsTask);
 module.exports['images-svgs'] = imagesSvgsTask;
 
-const imagesSvgsChanged = function () { return _imagesSvgs(true) };
+const _imagesSvgsOneLanguageChanged = function (locale, data, cb) {
+  return _imagesSvgsOneLanguage(true, locale, cb);
+}
+const imagesSvgsChanged = function (cb) {
+  return base.locale.langsFromDataJsons(_imagesSvgsOneLanguageChanged, cb);
+};
 let imagesSvgsChangedTask = base.gulp.series(imagesSvgsChanged);
 imagesSvgsChangedTask.description = 'Copies and minifies all changed SVG images';
 base.gulp.task('images-svgs-changed', imagesSvgsChangedTask);
 module.exports['images-svgs-changed'] = imagesSvgsChangedTask;
 
 // OTHER IMAGES
-const _imagesOptimize = function (changed) {
-    return base.gulp
-        .src(config.src)
-        .pipe(base.$.if(changed, base.$.changed(config.dest)))
-        .pipe(base.debug.log_files('images-optimize'))
-        .pipe(base.$.image())
-        .pipe(base.gulp.dest(config.dest));
+const _imagesOptimizeOneLanguage = function (changed, locale, cb) {
+  // build localized dest
+  const dest = config.build + (locale ? `/${locale}/` : '/') + config.dest_folder;
+
+  return base.gulp
+    .src(config.src)
+    .pipe(base.$.if(changed, base.$.changed(dest)))
+    .pipe(base.debug.log_files('images-optimize'))
+    .pipe(base.$.image())
+    .pipe(base.gulp.dest(dest))
+    .on('end', () => {
+      cb();
+    });
 }
-const imagesOptimize = function () { return _imagesOptimize(false); };
+const _imagesOptimizeOneLanguageNotChanged = function (locale, data, cb) {
+  return _imagesOptimizeOneLanguage(false, locale, cb);
+};
+const imagesOptimize = function (cb) {
+  return base.locale.langsFromDataJsons(_imagesOptimizeOneLanguageNotChanged, cb);
+};
 let imagesOptimizeTask = base.gulp.series(imagesOptimize);
 imagesOptimizeTask.description = 'Copies and optimize non-svg-images';
 base.gulp.task('images-optimize', imagesOptimizeTask);
 module.exports['images-optimize'] = imagesOptimizeTask;
 
-const imagesOptimizeChanged = function () { return _imagesOptimize(true); };
+const _imagesOptimizeOneLanguageChanged = function (locale, data, cb) {
+  return _imagesOptimizeOneLanguage(true, locale, cb);
+};
+const imagesOptimizeChanged = function (cb) {
+  return base.locale.langsFromDataJsons(_imagesOptimizeOneLanguageChanged, cb);
+};
 let imagesOptimizeChangedTask = base.gulp.series(imagesOptimizeChanged);
 imagesOptimizeChangedTask.description = 'Copies and optimize all changed non-svg-images';
 base.gulp.task('images-optimize-changed', imagesOptimizeChangedTask);
@@ -54,9 +86,9 @@ module.exports['images-optimize-changed'] = imagesOptimizeChangedTask;
 // CLEANER
 const imagesClean = function () {
   return base.gulp
-  .src(config.clean)
-  .pipe(base.debug.log_files('remove'))
-  .pipe(base.files.remove());
+    .src(config.clean)
+    .pipe(base.debug.log_files('remove'))
+    .pipe(base.files.remove());
 };
 let imagesCleanTask = base.gulp.series(imagesClean);
 imagesCleanTask.description = 'cleans all optimized/minifies images';
