@@ -84,7 +84,7 @@ module.exports['scss-watch'] = scssWatchTask;
 // CLEANER
 const scssClean = function () {
   return base.gulp
-  .src(config.dest)
+  .src(config.clean)
   .pipe(base.debug.log_files('remove'))
   .pipe(base.files.remove());
   
